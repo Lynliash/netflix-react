@@ -33,11 +33,28 @@ class FilmList extends Component {
 
     return (
       <>
-        <h4 className="text-light mb-1 mt-3 ms-3">{title}</h4>
-        <Row className="g-0">
+        <h4 className="text-light mb-2 mt-3 ms-1">{title}</h4>
+        <Row
+          className="g-5
+        "
+        >
+          {/* Nel map, essendo che a volte uscivano duplicati e mi dava errore in console
+          per risolvere sono dovuto ricorrere a chatgpt, che mi ha consigliato di aggiungere
+          anche l'index alla key, in modo da avere sempre un "id" unico anche in caso di duplicati */}
           {films.map((film, index) => (
-            <Col key={film.imdbID + index} className="mb-2 text-center p-0" xs={6} md={4} lg={2}>
-              <Image fluid src={film.Poster} alt={film.Title} style={{ height: "250px", objectFit: "fill" }} />
+            <Col key={film.imdbID + index} className="px-2 px-md-4 px-lg-5" xs={6} md={4} lg={2}>
+              {" "}
+              <Image
+                fluid
+                src={film.Poster}
+                alt={film.Title}
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  objectFit: "cover",
+                  objectPosition: "top",
+                }}
+              />
             </Col>
           ))}
         </Row>
